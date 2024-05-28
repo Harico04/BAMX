@@ -1,8 +1,11 @@
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/style.css">
     <title>Banco de alimentos de Mexico</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -11,4 +14,123 @@
     <form action="logOut?_method=DELETE" method="POST">
         <button type="submit"> Cerrar sesión</button>
     </form>
+
+    <div class="chart-container">
+        <canvas id="canvas" width="600" height="300"></canvas>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Verificar si el canvas está presente
+            if (!document.getElementById('canvas')) {
+                console.error('No se encontro el canvas');
+                return;
+            }
+
+            fetch('/datos')
+                .then(response => {
+                    // Verificar si la respuesta es correcta
+                    if (!response.ok) {
+                        throw new Error("Hubo un error en la respuesta");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                     // Filtrar el valor type1
+                     data = data.filter(item => item["COL 4"] !== "type1");
+
+                    const counts = {};
+                    data.forEach(item => {
+                        counts[item["COL 4"]] = counts[item["COL 4"]] ? counts[item["COL 4"]] + 1 : 1;
+                    });
+
+                    const labels = Object.keys(counts);
+                    const valores = Object.values(counts);
+                    
+                    // Arrays de colores para el gráfico
+                    const backgroundColors = [
+                        'rgba(0, 230, 14, 0.85)',//planta
+                        'rgba(255, 162, 0, 0.85)',//fuego
+                        'rgba(0, 68, 255, 0.85)',//agua
+                        'rgba(37, 161, 0, 0.85)',//bicho
+                        'rgba(134, 134, 134, 0.85)',//normal
+                        'rgba(248, 96, 253, 0.85)',//veneno
+                        'rgba(255, 235, 43, 0.85)',//rayo
+                        'rgba(146, 109, 22, 0.85)',//tierra
+                        'rgba(255, 135, 252, 0.85)',//hada
+                        'rgba(206, 124, 0, 0.85)',//lucha
+                        'rgba(253, 65, 209, 0.85)',//psiquico
+                        'rgba(138, 121, 134, 0.85)',//roca
+                        'rgba(179, 55, 188, 0.85)',//fantasma
+                        'rgba(0, 255, 255, 0.85)',//hielo
+                        'rgba(58, 141, 245, 0.85)',//dragon
+                        'rgba(137, 125, 99, 0.85)',//oscuro
+                        'rgba(131, 149, 191, 0.85)',//steel
+                        'rgba(140, 173, 252, 0.85)'//volador
+                         
+                    ];
+
+                    const borderColors = [
+                    'rgba(0, 230, 14, 1)',//planta
+                        'rgba(255, 162, 0, 1)',//fuego
+                        'rgba(0, 68, 255, 1)',//agua
+                        'rgba(37, 161, 0, 1)',//bicho
+                        'rgba(134, 134, 134, 1)',//normal
+                        'rgba(248, 96, 253, 1)',//veneno
+                        'rgba(255, 235, 43, 1)',//rayo
+                        'rgba(146, 109, 22, 1)',//tierra
+                        'rgba(255, 135, 252, 1)',//hada
+                        'rgba(206, 124, 0, 1)',//lucha
+                        'rgba(253, 65, 209, 1)',//psiquico
+                        'rgba(138, 121, 134, 1)',//roca
+                        'rgba(179, 55, 188, 1)',//fantasma
+                        'rgba(0, 255, 255, 1)',//hielo
+                        'rgba(58, 141, 245, 1)',//dragon
+                        'rgba(137, 125, 99, 1)',//oscuro
+                        'rgba(131, 149, 191, 1)',//steel
+                        'rgba(140, 173, 252, 1)'//volador
+                             
+            
+            
+                    ];
+
+                    const ctx = document.getElementById('canvas').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: "pie", 
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: "Frecuencia de tipos primarios",
+                                data: valores,
+                                backgroundColor: backgroundColors.slice(0, labels.length),
+                                borderColor: borderColors.slice(0, labels.length),
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            const label = context.label || '';
+                                            const value = context.raw || '';
+                                            return `${label}: ${value}`;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error("Error al recabar datos", error);
+                });
+        });
+    </script>
 </body>
+</html>

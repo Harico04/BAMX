@@ -6,14 +6,14 @@ function initialize(passport, getUserByEmail, getUserById) {
     try {
       const user = await getUserByEmail(email); // Await the promise from getUserByEmail
       if (!user) {
-        return done(null, false, { message: 'No user with that email' });
+        return done(null, false, { message: 'No hay un usuario con este email' });
       }
 
       const match = await bcrypt.compare(password, user.password);
       if (match) {
         return done(null, user);
       } else {
-        return done(null, false, { message: 'Password incorrect' });
+        return done(null, false, { message: 'contrasena incorrecta' });
       }
     } catch (e) {
       return done(e);

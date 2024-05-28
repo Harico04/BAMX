@@ -55,10 +55,10 @@ app.use(methodOverride('_method'))
 // CREACION DE BASE DE DATOS /////////////////////////
 //////////////////////////////////////////////////////
 const db = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'nodejs-login'
 })
 
 db.connect((error)=>{
@@ -70,6 +70,33 @@ db.connect((error)=>{
 })
 /////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////
+// CONEXION A BASE DE DATOS pokemon_data ///////////
+//////////////////////////////////////////////////////
+const dbPokemon = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'pokemon_data'
+  })
+  
+  dbPokemon.connect((error)=>{
+    if(error){
+      console.log(error)
+    }else{
+      console.log("Conectado a pokemon_data")
+    }
+  })
+  /////////////////////////////////////////////////////
+
+  //nueva ruta para obtener los datos de "type1"
+    app.get('/datos', (req, res) => {
+        let sql = 'SELECT `COL 4` FROM pokemon_data';
+        dbPokemon.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results);
+        });
+    });
 
 // DEFINIMOS LAS RUTAS (./Routes/pages.js)///////////
 app.use('/', require('./routes/pages'))
