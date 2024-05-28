@@ -1,16 +1,10 @@
-# PROYECTO PARA EL BANCO DE ALIMENTOS DE HERMOSILLO
+# PROYECTO PARA INGENIERIA DE SOFTWARE
  
 ###  Descripción:
-Aplicación software que permita a sus usuarios capturar los datos requeridos sobre su vivienda y familia para aplicar al recibimiento de apoyo alimentario por parte de BAMX, y a los encargados del banco gestionar con mayor facilidad dichas aplicaciones al programa.
+Aplicación software que permita a sus usuarios capturar los datos requeridos para loguearser a una plataforma, la cual les muestra un dashboard presentando la proporcion de tipos primarios de todos los pokemon existentes hasta la actualidad.
  
 ### Objetivo general:
-Desarrollar un software que haga más sencillo el proceso de aplicación al programa tanto a los aspirantes como a los encargados, mediante una plataforma en la que se puedan introducir los datos del aspirante y una base de datos en la que se almacenen para fácil acceso.
- 
-###  Objetivo específicos:
-- Desarrollar una plataforma en la que se puedan capturar los datos de acuerdo al formato de BAMX
-- Desarrollar una base de datos en la que se puedan almacenar los datos
-- Desarrollar un mapa de calor en el que se puedan visualizar las áreas con mayor densidad de apoyados
-- Permitir el sencillo y ordenado acceso a la información de los aspirantes para darlos de alta o baja
+Desarrollar un software que haga uso de bases de datos para almacenar informacion de registro de usuario, asi como extraer informacion de las mismas y presentarla en un dashboard.
 
 ###  Integrantes
 
@@ -22,3 +16,19 @@ Desarrollar un software que haga más sencillo el proceso de aplicación al prog
  - [Ernesto Carrasco](https://github.com/jesuscarra) 
  - [Ricardo Peña](https://github.com/RemilZarza)
  - [Ian Zepeda](https://github.com/I4NzG)
+
+#Como utilizar el programa
+
+###Clonar el repositorio
+Primero se debe clonar el repositorio a la carpeta de su preferencia.
+
+###Configurar servidor de Node.js
+Se debe iniciar en la carpeta a la que se clono un servidor Node.js, y se deben descargar todas las dependencias (express, mySQL, passport, etc.).
+
+###Tener capacidad de crear e importar bases de datos en mySQL
+Se debe tener a la vez software necesario para tener bases de datos de mySQL, ya se el mismo mySQL o uno como XAMPP. Se debe crear una base de datos llamada nodejs-users, que tenga un tabla llamada users. La tabal debe tener 4 columnas llamadas id(INT 11), name(VARCHAR 100), email(VARCHAR 100) y password(VARCHAR 255). id debe tener autoincremento.
+Tambien se debe importar la base de datos pokemon_data, la cual se puede encontrar en Kaggle.
+
+###Iniciar el proyecto
+
+Con todo listo se debe iniciar la base de datos en la que se tienen guardadas tanto nodejs-users como pokemon_data. Se inicia el servidor con el comando "npm run devStart", y en el navegador se abre el link localhost:300. Una vez todo esto este listo de debera ver la pagina.
