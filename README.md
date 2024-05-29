@@ -1,7 +1,7 @@
 # PROYECTO PARA INGENIERIA DE SOFTWARE
  
 ###  Descripción:
-Aplicación software que permita a sus usuarios capturar los datos requeridos para loguearser a una plataforma, la cual les muestra un dashboard presentando la proporcion de tipos primarios de todos los pokemon existentes hasta la actualidad.
+Aplicación software realizada con html, Javascript, Node.js y mySQL que permite a sus usuarios capturar los datos requeridos para loguearser a una plataforma, la cual les muestra un dashboard presentando la proporcion de tipos primarios de todos los pokemon existentes hasta la actualidad.
  
 ### Objetivo general:
 Desarrollar un software que haga uso de bases de datos para almacenar informacion de registro de usuario, asi como extraer informacion de las mismas y presentarla en un dashboard.
