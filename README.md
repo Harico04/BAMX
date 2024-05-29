@@ -26,8 +26,7 @@ Primero se debe clonar el repositorio a la carpeta de su preferencia.
 Se debe iniciar en la carpeta a la que se clono un servidor Node.js, y se deben descargar todas las dependencias (express, mySQL, passport, etc.).
 
 ### Tener capacidad de crear e importar bases de datos en mySQL
-Se debe tener a la vez software necesario para tener bases de datos de mySQL, ya se el mismo mySQL o uno como XAMPP. Se debe crear una base de datos llamada nodejs-users, que tenga un tabla llamada users. La tabal debe tener 4 columnas llamadas id(INT 11), name(VARCHAR 100), email(VARCHAR 100) y password(VARCHAR 255). id debe tener autoincremento.
-Tambien se debe importar la base de datos pokemon_data, la cual se puede encontrar en Kaggle.
+Se debe tener a la vez software necesario para tener bases de datos de mySQL, ya sea el mismo mySQL o uno como XAMPP. Se deben de importar las bases de datos contenidas en la carpeta databases a la base de datos de mySQL.
 
 ### Iniciar el proyecto
 
