@@ -1,7 +1,7 @@
 # PROYECTO PARA VISUALIZACION DE TIPOS PRIMARIOS DE POKEMON EN GRAFICA DE PIE
  
 ###  Descripción:
-Aplicación software realizada con html, Javascript, Node.js y mySQL que permite a sus usuarios capturar los datos requeridos para loguearse a una plataforma, la cual les muestra un dashboard presentando la proporcion de tipos primarios de todos los pokemon existentes hasta la actualidad en una gráfica de pie con colores adecuados al tipo, utilizando Chart.js. Esta informacion se obtuvo de la base de datos pokemon_data exportada de la plataforma kaggle.
+Aplicación software realizada con html, Javascript, Node.js y XAMPP que permite a sus usuarios capturar los datos requeridos para loguearse a una plataforma, la cual les muestra un dashboard presentando la proporcion de tipos primarios de todos los pokemon existentes hasta la actualidad en una gráfica de pie con colores adecuados al tipo, utilizando Chart.js. Esta informacion se obtuvo de la base de datos pokemon_data exportada de la plataforma kaggle.
  
 ### Objetivo general:
 Desarrollar un software que haga uso de bases de datos para almacenar informacion de registro de usuario, asi como extraer informacion de las mismas y presentarla en un dashboard.
