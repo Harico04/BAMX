@@ -20,7 +20,7 @@ initializePassport(
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(results[0]); // returns the first row found or undefined if no user is found
+                    resolve(results[0]); 
                 }
             });
         });
@@ -31,7 +31,7 @@ initializePassport(
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(results[0]); // returns the first row found or undefined if no user is found
+                    resolve(results[0]); 
                 }
             });
         });
